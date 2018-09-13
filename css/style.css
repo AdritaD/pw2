@@ -1,0 +1,57 @@
+.header
+{
+   background: #f4f4f4;
+   border-bottom:#ccc 3px solid;
+}
+
+.h5
+{
+	background: #f4f4f4;
+   border-bottom:#ccc 3px solid;
+}
+
+.container
+{
+   width: :700px;
+   margin: 30px auto;
+   text-align:left;
+}
+
+body
+{
+	text-align: left;
+	font-size: 18px;
+	font-family: sans-serif;
+
+}
+
+#form
+{
+	border: 2px solid black;
+}
+
+#password
+{
+	padding-right: 238px;
+	background: #f4f4f4;
+}
+
+#re_password
+{
+	padding-right: 238px;
+	background: #f4f4f4;
+}
+
+#email
+{
+	padding-right: 238px;
+	background: #f4f4f4;
+}
+
+.form-group input
+{
+    background: #f4f4f4;
+	padding: 12px;
+	margin:15px;
+	align-items: left;
+}

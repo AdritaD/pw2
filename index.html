@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JQuery Form</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript"></script>
+	<!--<script src="main.js" type="text/javascript"></script>-->
+</head>
+<body onload="showDate()" id="body">
+	<div class="header">
+    <h1 id="heading">Sign Up</h1>
+    </div>
+
+    </div>
+    <!--form-->
+
+<!--form-->
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h5>fill this form to create an account</h5>
+			<span class="error_form" id="form_error"></span>
+			<hr/>
+			<form method="post" action="something.php" name="myForm" id="form">
+				<div class="form-group">
+					<!--input name-->
+    	   
+    	   <input type="text" name="first-name" placeholder="Enter Name" id="username"> 
+           <span class="error_form" id="username_error"></span>
+
+           
+    	   <input type="text" name="last-name" placeholder="Enter Last-Name" id="lastname"> 
+           <span class="error_form" id="lastname_error"></span>
+				</div>
+				
+				<div class="form-group">
+					 <!--password-->
+    	   
+    	   <input type="password" name="password" placeholder="password" id="password"> 
+           <span class="error_form" id="password_error"></span>
+				</div>
+
+
+				<div class="form-group">
+					 <!--password-->
+    	   
+    	   <input type="password" name="re_password" placeholder="re_password" id="re_password"> 
+           <span class="error_form" id="re_password_error"></span>
+				</div>
+
+				<div class="form-group">
+					 <!--email-->
+    	    
+    	   <input type="text" name="email" placeholder="Email" id="email"> 
+           <span class="error_form" id="email_error"></span>
+				</div>
+
+				<div class="form-group">
+					 <!--checkbox-->
+    	    <input type="checkbox" name="checkbox" value="checkbox" id="checkbox"> I agree to all the terms and conditions<br>
+    	    <span class="error_form" id="checkbox_error"></span>
+				</div>
+
+
+				<div class="form-group">
+				
+					<input type="submit" value="submit" class="submit_button" />
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<hr/>
+    
+   
+    
+
+    <script type="text/javascript">
+    	alert('file linked');
+    	
+
+     //form validation
+    $(function(){
+
+
+       var e_username =false;
+       var e_lastname =false;
+       var e_password =false;
+       var e_re_password=false;
+       var e_email =false;
+       var e_checkbox =false;
+
+
+       $('#username') .focusin(function(){
+          $('#username').css('background-color','white');
+       });
+
+
+       $('#username') .focusout(function(){
+          check_username();
+       });
+
+
+      $('#lastname') .focusin(function(){
+          $('#lastname').css('background-color','white');
+       });
+
+       $('#lastname') .focusout(function(){
+          check_lastname();
+       });
+
+       $('#password') .focusin(function(){
+          $('#password').css('background-color','white');
+       });
+
+       $('#password') .focusout(function(){
+          check_password();
+       });
+
+       $('#re_password') .focusin(function(){
+          $('#re_password').css('background-color','white');
+       });
+
+        $('#re_password') .focusout(function(){
+          check_password2();
+       });
+
+        $('#email') .focusin(function(){
+          $('#email').css('background-color','white');
+       });
+
+       $('#email') .focusout(function(){
+          check_email();
+       });
+
+      
+
+       function check_username()
+       {
+        var username = $('#username').val();
+    var uReg = /^[a-zA-Z]{1,10}$/;
+       if(!username == '' && uReg.test(username))
+       {
+        
+        $('#username').css('background-color','#f4f4f4');
+          
+       }
+       else
+       { 
+       
+         $('#username').css('background-color','red');
+         e_username =true;
+       }
+       }
+
+        function check_lastname()
+       {
+        var lastname = $('#lastname').val();
+    var uReg = /^[a-zA-Z]{1,10}$/;
+       if(!lastname == '' && uReg.test(lastname))
+       {
+       
+        $('#lastname').css('background-color','#f4f4f4');
+          
+       }
+       else
+       {
+        
+         $('#lastname').css('background-color','red');
+         e_lastname =true;
+       }
+       }
+
+        function check_password()
+       {
+       	var password = $('#password').val();
+         if(password == '')
+         {
+        
+        
+         $('#password').css('background-color','red');
+         e_password =true;
+        }
+       else
+       {
+       
+        $('#password').css('background-color','#f4f4f4');
+       }
+       }
+
+       function check_password2()
+       {
+
+        var password = $("#password").val();
+    var confirmPassword = $("#re_password").val();
+
+    // Check for equality with the password inputs
+    if (confirmPassword='' || password != confirmPassword ) {
+    	$('#re_password').css('background-color','red');
+    	e_re_password=true;
+    } 
+
+    else
+    {
+    	$('#re_password').css('background-color','#f4f4f4');
+    }
+
+       }
+
+        function check_email()
+       {
+        var email = $('#email').val();
+    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+       if(!email == '' && emailReg.test(email))
+       {
+       
+        $('#email').css('background-color','#f4f4f4');
+          
+       }
+       else
+       {
+        
+   
+         
+         $('#email').css('background-color','red');
+         e_email =true;
+       }
+       }
+
+       function check_checkbox()
+       {
+        var checkbox = $('#checkbox').val();
+      if(!$("#checkbox").prop('checked'))
+       {
+
+         e_checkbox=true;
+         return true;
+         
+       }
+       else
+       {
+       	return false;
+       }
+       }
+
+
+
+    
+      $('#form').submit(function(f){
+      	
+         e_username =false;
+       e_password =false;
+       e_re_password=false;
+       e_email =false;
+       e_lastname =false;
+       e_checkbox= false;
+
+       check_username();
+       check_password();
+       check_email();
+       check_lastname();
+       check_password2();
+       check_checkbox();
+
+       if (e_username == false && e_password == false && e_re_password==false && e_email == false && e_lastname == false && e_checkbox==false)  
+       {
+        return true;
+       }
+        else
+        {
+        alert("enter correct details");
+        f.preventDefault();
+        return false;
+        
+        }
+      });
+
+
+          
+
+    });
+
+     	
+    </script>
+</body>
+</html>
